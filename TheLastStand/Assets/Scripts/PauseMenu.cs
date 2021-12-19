@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : Singleton<PauseMenu>
 {
-    public GameObject ui;
+    public GameObject pauseMenu;
 
     void Update()
     {
@@ -15,9 +15,9 @@ public class PauseMenu : Singleton<PauseMenu>
     }
     public void Toggle()
     {
-        ui.SetActive(!ui.activeSelf);
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
 
-        if (ui.activeSelf)
+        if (pauseMenu.activeSelf)
         {
             _GM.gameState = GameState.Paused;
             Time.timeScale = 0f;

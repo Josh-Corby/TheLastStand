@@ -11,6 +11,12 @@ public enum GameState
     GameOver
 }
 
+public enum WaveState
+{
+    Spawning,
+    Shop
+}
+
 public class GameManager : Singleton<GameManager>
 {
     public GameState gameState;
