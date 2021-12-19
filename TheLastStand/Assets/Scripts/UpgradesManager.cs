@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradesManager : Singleton<UpgradesManager>
 {
@@ -17,17 +18,19 @@ public class UpgradesManager : Singleton<UpgradesManager>
     5 upgrade fire rate
     6 heal
      */
+    public Text money;
 
-    private void Start()
+    private void Update()
     {
-
-
+        money.text = _GM.money.ToString();
     }
+    /*
     public void UpgradeHealth()
     {
         if (_GM.money >= shopCosts[0])
         {
             _P.maxHealth += 10;
+
             shopCosts[0] += 5;
         }    
     }
@@ -77,5 +80,32 @@ public class UpgradesManager : Singleton<UpgradesManager>
             _P.currentHealth = _P.maxHealth;
         }
         
+    }
+    */
+    public void Upgrade(int i)
+    {
+        if (_GM.money >= shopCosts[i])
+        {
+            if (i == 0)
+                _P.maxHealth += 10;
+            else if (i == 1)
+                _PC.moveSpeed += 0.5f;
+            else if (i == 2)
+                bullet.damage += 2;
+            else if (i == 3)
+                gun.bulletSpeed += 0.5f;
+            else if (i == 4)
+                gun.timeBetweenShots -= 0.02f;
+
+            _GM.money -= shopCosts[i];
+            shopCosts[i] += 5;
+        }
+        if (i == 5)
+            if (_GM.money >= shopCosts[i])
+            {
+                _GM.money -= shopCosts[i];
+                _P.currentHealth = _P.maxHealth;
+            }
+                
     }
 }
