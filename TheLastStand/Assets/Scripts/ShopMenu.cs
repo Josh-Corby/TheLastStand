@@ -46,6 +46,7 @@ public class ShopMenu : Singleton<ShopMenu>
         {
             _GM.gameState = GameState.Playing;
             Time.timeScale = 1f;
+            _GM.waveState = WaveState.ReadyToSpawn;
         }
     }
 }

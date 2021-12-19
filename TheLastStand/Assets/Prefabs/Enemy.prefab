@@ -225,7 +225,7 @@ MonoBehaviour:
   speedMultiplier: 0.4
   enemyBullet: {fileID: 4999291273643531119, guid: 4f68630a533859142a89702189136ef1, type: 3}
   bulletSpeed: 10
-  timeBetweenShots: 2
+  timeBetweenShots: 3
   firePoint: {fileID: 8675483771354181181}
   thePlayer: {fileID: 0}
 --- !u!1 &8552065418347060241

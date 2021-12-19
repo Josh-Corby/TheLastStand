@@ -43,24 +43,25 @@ public class GameManager : Singleton<GameManager>
         _UI.UpdateTimer(waveTimer);
         _UI.UpdateHealth(_P.currentHealth);
 
-        if (waveState == WaveState.ReadyToSpawn)
+        if (waveState == WaveState.ReadyToSpawn && _EM.enemies.Count == 0)
         {
-            if (_EM.enemies.Count == 0)
+            waveTimer -= Time.deltaTime;
+            if (waveTimer <= 0)
             {
-                waveTimer -= Time.deltaTime;
-                if (waveTimer <= 0)
-                {
-                    waveTimer = 3;
-                    IncrementWaveCount();
-                    _UI.UpdateWaveCount(waveCount);
-                    StartCoroutine(_EM.SpawnWithDelay());
-                    waveState = WaveState.Spawned;
-                }
-                else if (waveTimer == 0 && _EM.enemies.Count == 0)
-                    waveTimer = 3f;
+                waveTimer = 3;
+                IncrementWaveCount();
+                _UI.UpdateWaveCount(waveCount);
+                StartCoroutine(_EM.SpawnWithDelay());
+                waveState = WaveState.Spawned;
             }
+            else if (waveTimer == 0 && _EM.enemies.Count == 0)
+                waveTimer = 3f;
         }
-        
+        else if (waveState == WaveState.Spawned && _EM.enemies.Count == 0)
+        {
+            waveState = WaveState.Shop;
+            _SM.ToggleShop();
+        }
     }
     /*
         if (Input.GetKeyDown(KeyCode.Z))
