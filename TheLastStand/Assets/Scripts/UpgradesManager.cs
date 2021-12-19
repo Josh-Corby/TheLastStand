@@ -87,25 +87,44 @@ public class UpgradesManager : Singleton<UpgradesManager>
         if (_GM.money >= shopCosts[i])
         {
             if (i == 0)
+            {
                 _P.maxHealth += 10;
+                _SM.playerStats[i].text = _P.maxHealth.ToString();
+            }
+                
             else if (i == 1)
+            {
                 _PC.moveSpeed += 0.5f;
+                _SM.playerStats[i].text = _PC.moveSpeed.ToString();
+            }  
             else if (i == 2)
+            {
                 bullet.damage += 2;
+                _SM.playerStats[i].text = bullet.damage.ToString();
+            }
+                
             else if (i == 3)
+            {
                 gun.bulletSpeed += 0.5f;
+                _SM.playerStats[i].text = gun.bulletSpeed.ToString();
+            }
+                
             else if (i == 4)
+            {
                 gun.timeBetweenShots -= 0.02f;
-
+                _SM.playerStats[i].text = gun.timeBetweenShots.ToString();
+            }
             _GM.money -= shopCosts[i];
             shopCosts[i] += 5;
             _SM.upgradeCosts[i].text = shopCosts[i].ToString();
+
         }
         if (i == 5)
             if (_GM.money >= shopCosts[i])
             {
                 _GM.money -= shopCosts[i];
                 _P.currentHealth = _P.maxHealth;
+                _SM.playerStats[i].text = _P.maxHealth.ToString();
             }
                 
     }

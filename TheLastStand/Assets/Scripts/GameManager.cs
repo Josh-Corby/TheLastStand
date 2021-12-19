@@ -55,7 +55,7 @@ public class GameManager : Singleton<GameManager>
             else if (waveTimer == 0 && _EM.enemies.Count == 0)
                 waveTimer = 3f;
         }
-/*
+    /*
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (money >= 70)
@@ -128,7 +128,7 @@ public class GameManager : Singleton<GameManager>
             else
                 Debug.Log("Not enough money!");
         }
-*/
+    */
         
     }
             

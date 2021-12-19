@@ -5,8 +5,12 @@ using TMPro;
 
 public class ShopMenu : Singleton<ShopMenu>
 {
+    public Bullet bullet;
+    public GunControl gun;
 
     public TMP_Text[] upgradeCosts;
+    public TMP_Text healCost;
+    public TMP_Text[] playerStats;
 
 
     void Start()
@@ -17,5 +21,13 @@ public class ShopMenu : Singleton<ShopMenu>
             upgradeCosts[i].text = _UM.shopCosts[i].ToString();
             i++;
         }
+        healCost.text = _UM.shopCosts[5].ToString();
+
+        playerStats[0].text = _P.maxHealth.ToString();
+        playerStats[1].text = _PC.moveSpeed.ToString();
+        playerStats[2].text = bullet.damage.ToString();
+        playerStats[3].text = gun.bulletSpeed.ToString();
+        playerStats[4].text = gun.timeBetweenShots.ToString();
+        playerStats[5].text = _P.currentHealth.ToString();
     }
 }
