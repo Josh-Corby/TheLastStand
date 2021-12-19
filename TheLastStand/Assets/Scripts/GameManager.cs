@@ -13,13 +13,15 @@ public enum GameState
 
 public enum WaveState
 {
-    Spawning,
+    ReadyToSpawn,
+    Spawned,
     Shop
 }
 
 public class GameManager : Singleton<GameManager>
 {
     public GameState gameState;
+    public WaveState waveState;
     public int money;
 
     public float waveTimer = 3f;
@@ -29,32 +31,37 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        
         gameState = GameState.Playing;
+        waveState = WaveState.ReadyToSpawn;
         money = 1000;
         _UI.UpdateMoney(money);
         _UI.UpdateWaveCount(waveCount);
 
     }
     void Update()
-    { 
+    {
         _UI.UpdateTimer(waveTimer);
         _UI.UpdateHealth(_P.currentHealth);
 
-        if (_EM.enemies.Count == 0)
+        if (waveState == WaveState.ReadyToSpawn)
         {
-            waveTimer -= Time.deltaTime;
-            if (waveTimer <= 0)
+            if (_EM.enemies.Count == 0)
             {
-                waveTimer = 3;
-                IncrementWaveCount();
-                _UI.UpdateWaveCount(waveCount);
-                StartCoroutine(_EM.SpawnWithDelay());
-                
+                waveTimer -= Time.deltaTime;
+                if (waveTimer <= 0)
+                {
+                    waveTimer = 3;
+                    IncrementWaveCount();
+                    _UI.UpdateWaveCount(waveCount);
+                    StartCoroutine(_EM.SpawnWithDelay());
+                    waveState = WaveState.Spawned;
+                }
+                else if (waveTimer == 0 && _EM.enemies.Count == 0)
+                    waveTimer = 3f;
             }
-            else if (waveTimer == 0 && _EM.enemies.Count == 0)
-                waveTimer = 3f;
         }
+        
+    }
     /*
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -130,13 +137,12 @@ public class GameManager : Singleton<GameManager>
         }
     */
         
-    }
-            
-
+    /*
     public void ChangeGameState(GameState _gameState)
     {
         gameState = _gameState;
     }
+    */
     public void AddScore(int _money)
     {
         money += _money;

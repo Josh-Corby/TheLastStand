@@ -76,7 +76,7 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button7))
-                _PM.Toggle();
+                _PM.TogglePause();
     }
 
     void FixedUpdate()

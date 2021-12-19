@@ -8,12 +8,13 @@ public class PauseMenu : Singleton<PauseMenu>
 {
     public GameObject pauseMenu;
 
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Toggle();
+            TogglePause();
     }
-    public void Toggle()
+    public void TogglePause()
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
@@ -31,13 +32,13 @@ public class PauseMenu : Singleton<PauseMenu>
 
     public void Retry()
     {
-        Toggle();
+        TogglePause();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Menu()
     {
-        Toggle();
+        TogglePause();
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -5,6 +5,8 @@ using TMPro;
 
 public class ShopMenu : Singleton<ShopMenu>
 {
+    public GameObject shopMenu;
+
     public Bullet bullet;
     public GunControl gun;
 
@@ -29,5 +31,21 @@ public class ShopMenu : Singleton<ShopMenu>
         playerStats[3].text = gun.bulletSpeed.ToString();
         playerStats[4].text = gun.timeBetweenShots.ToString();
         playerStats[5].text = _P.currentHealth.ToString();
+    }
+
+    public void ToggleShop()
+    {
+        shopMenu.SetActive(!shopMenu.activeSelf);
+
+        if (shopMenu.activeSelf)
+        {
+            _GM.gameState = GameState.Paused;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            _GM.gameState = GameState.Playing;
+            Time.timeScale = 1f;
+        }
     }
 }
