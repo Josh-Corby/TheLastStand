@@ -6,34 +6,76 @@ public class UpgradesManager : Singleton<UpgradesManager>
 {
     public Bullet bullet;
     public GunControl gun;
- 
+
+    public int[] shopCosts;
+    /* 
+    0 upgrade health
+    1 upgrade speed
+    2 upgrade damage
+    3 upgrade bullet speed
+    4 upgrade bullet damage
+    5 upgrade fire rate
+    6 heal
+     */
+
+    private void Start()
+    {
+
+
+    }
     public void UpgradeHealth()
     {
-        _P.maxHealth += 10;
+        if (_GM.money >= shopCosts[0])
+        {
+            _P.maxHealth += 10;
+            shopCosts[0] += 5;
+        }    
     }
 
     public void UpgradeSpeed()
     {
-        _PC.moveSpeed += 0.5f;
+        if (_GM.money >= shopCosts[1])
+        { 
+            _PC.moveSpeed += 0.5f;
+            shopCosts[1]+= 5;
+        }
     }
 
     public void UpgradeDamage()
     {
-        bullet.damage += 2;
+
+        if(_GM.money >= shopCosts[2])
+        {
+            bullet.damage += 2;
+            shopCosts[2] += 5;
+        }
     }
 
     public void UpgradeBulletSpeed()
     {
-        gun.bulletSpeed += 0.5f;
+        if(_GM.money >= shopCosts[3])
+        {
+            gun.bulletSpeed += 0.5f;
+            shopCosts[3] += 5;
+        }
     }
 
     public void UpgradeFireRate()
     {
-        gun.timeBetweenShots -= 0.02f;
+        if(_GM.money >= shopCosts[4])
+        {
+            gun.timeBetweenShots -= 0.02f;
+            shopCosts[4] += 5;
+        }
+        
     }
 
     public void Heal()
     {
-        _P.currentHealth = _P.maxHealth;
+        if(_GM.money >= shopCosts[5])
+        {
+            _P.currentHealth = _P.maxHealth;
+        }
+        
     }
 }
