@@ -16,7 +16,7 @@ public class GunControl : GameBehaviour
 
     void Start()
     {
-        
+        bullet.damage = 10;
     }
 
     void Update()

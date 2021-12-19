@@ -74,6 +74,11 @@ public class PlayerController : Singleton<PlayerController>
                 gun.isFiring = false;
             }
         }
+
+       if (_GM.gameState == GameState.Playing && Input.GetKeyDown(KeyCode.Joystick1Button7))
+           _GM.PauseGame();
+        if (_GM.gameState == GameState.Paused && Input.GetKeyDown(KeyCode.Joystick1Button6))
+            _GM.ResumeGame();
     }
 
     void FixedUpdate()

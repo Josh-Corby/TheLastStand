@@ -34,4 +34,7 @@ public class UIManager : Singleton<UIManager>
     {
         waveTimer.text = _GM.waveTimer.ToString("F2");
     }
+
+
+
 }

@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        
         gameState = GameState.Playing;
         money = 1000;
         _UI.UpdateMoney(money);
@@ -49,7 +50,7 @@ public class GameManager : Singleton<GameManager>
                 waveTimer = 3f;
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (money >= 70)
             {
@@ -121,8 +122,12 @@ public class GameManager : Singleton<GameManager>
             else
                 Debug.Log("Not enough money!");
         }
-    }
 
+        if (gameState == GameState.Playing && (Input.GetKeyDown(KeyCode.Escape)))
+            PauseGame();
+
+    }
+            
 
     public void ChangeGameState(GameState _gameState)
     {
@@ -139,5 +144,17 @@ public class GameManager : Singleton<GameManager>
     {
         waveCount += 1;
         totalEnemies = (enemyAmount + waveCount);
+    }
+
+    public void PauseGame()
+    {
+        gameState = GameState.Paused;
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        gameState = GameState.Playing;
+        Time.timeScale = 1f;
     }
 }
