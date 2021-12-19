@@ -8,13 +8,14 @@ public class PlayerController : Singleton<PlayerController>
     public float moveSpeed;
     private Rigidbody rb;
 
+    //input values
     private Vector3 moveInput;
     private Vector3 moveVelocity;
 
     private Camera mainCamera;
-
     public GunControl gun;
 
+    //checks if player is using a controller and enables the necessary controls
     public bool useController;
 
     void Start()
@@ -74,7 +75,7 @@ public class PlayerController : Singleton<PlayerController>
                 gun.isFiring = false;
             }
         }
-
+        //controller input to pause the game
         if (Input.GetKeyDown(KeyCode.Joystick1Button7))
                 _PM.TogglePause();
     }

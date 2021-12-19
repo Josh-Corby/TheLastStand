@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class Enemy : GameBehaviour
 {
+
+    //Enemy stats
+    [Header("Enemy Stats")]
     public float maxHealth;
     private float health = 50;
     public float currentHealth;
     public float healthMultiplier;
-
     public int moneyWorth;
     public int totalWorth;
-
-    private Rigidbody rb;
     public float moveSpeed;
     public float currentSpeed;
     public float speedMultiplier;
 
-    public EnemyBullet enemyBullet;
-    public float bulletSpeed;
+    private Rigidbody rb;
 
+    //reference to bullet and bullet stats
+    public EnemyBullet enemyBullet;
+    public Transform firePoint;
+    public float bulletSpeed;
     public float timeBetweenShots;
     private float shotCounter;
 
-    public Transform firePoint;
-
+    
     public PlayerController thePlayer;
 
+    //enemy stats are constantly increasing as waves increase
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,10 +40,13 @@ public class Enemy : GameBehaviour
         totalWorth = moneyWorth + (_GM.waveCount * 2);
     }
 
+    
     void Update()
     {
+        //The enemy constantly looks at the player
         transform.LookAt(thePlayer.transform.position);
         shotCounter -= Time.deltaTime;
+        // enemy fires a projectile when counter reaches 0
         if (shotCounter <= 0)
         {
             shotCounter = timeBetweenShots;
@@ -52,11 +58,13 @@ public class Enemy : GameBehaviour
         
     }
 
+    //enemy movespeed calculation
     void FixedUpdate()
     {
         rb.velocity = (transform.forward * currentSpeed);
     }
 
+    //function for how enemies take damage and die when their health reaches 0
     public void HurtEnemy(int _Damage)
     {
         currentHealth -= _Damage;

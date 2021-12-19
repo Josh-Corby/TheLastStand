@@ -7,22 +7,21 @@ public class EnemyManager : Singleton<EnemyManager>
     //Storage used for targets and spawn points
     public Transform[] spawnPoints;
     public GameObject[] enemyTypes;
-    public List<GameObject> enemies;
-    GameObject player;
 
+    //this list currently serves no purpose as there is only one enemy type but it could have use in the future
+    public List<GameObject> enemies;
+
+    //how long the spawner waits to spawn another enemy
     public float spawnDelay = 1f;
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
     void Update()
     {
         //Press L key to spawn a random target at a random spawn location
-        if (Input.GetKeyDown(KeyCode.L))
+        //if (Input.GetKeyDown(KeyCode.L))
             SpawnEnemy();
     }
 
+    // function used to spawn enemies at a random spawn point with a delay, until a wave is fully spawned
     public IEnumerator SpawnWithDelay()
     {
         
@@ -41,9 +40,9 @@ public class EnemyManager : Singleton<EnemyManager>
             //Run the coroutine again
         }
     }
-    //This function spawns a random target type at a random spawn point
 
-   
+
+    //This function spawns a random target type at a random spawn point
     void SpawnEnemy()
     {
         //Get a random target to spawn

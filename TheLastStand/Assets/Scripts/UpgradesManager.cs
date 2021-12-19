@@ -8,6 +8,8 @@ public class UpgradesManager : Singleton<UpgradesManager>
     public Bullet bullet;
     public GunControl gun;
 
+    /*this array is used to set the values of the different upgrades in the inspector. if more upgrades want to be added
+     they must be added into this array*/
     public int[] shopCosts;
     /* 
     0 upgrade health
@@ -28,6 +30,7 @@ public class UpgradesManager : Singleton<UpgradesManager>
         if(gun.timeBetweenShots <=0.01)
             fireRateUpgradeButton.enabled = false;
     }
+    //This is the functions I used for the upgrades before I optimised the code
     /*
     public void UpgradeHealth()
     {
@@ -86,6 +89,12 @@ public class UpgradesManager : Singleton<UpgradesManager>
         
     }
     */
+
+
+    /*This function takes in an int value that is sent from the upgrade buttons in the shop. Depending on which button
+    is pressed a different stat will be upgraded. after a stat is bought its price is increased for when it
+    is next bought. After something is upgraded, the respecting UI for the player stat is updated. the money is then
+    subtracted, and money value is updates.*/
     public void Upgrade(int i)
     {
         if (_GM.money >= shopCosts[i])

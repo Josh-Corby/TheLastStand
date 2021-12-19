@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//game states used
 public enum GameState
 {
-    Start,
     Playing,
     Paused,
-    GameOver
 }
 
+
+// states used to manage spawner and shop
 public enum WaveState
 {
     ReadyToSpawn,
@@ -22,8 +23,12 @@ public class GameManager : Singleton<GameManager>
 {
     public GameState gameState;
     public WaveState waveState;
+
+    //variable used for player money
     public int money;
 
+
+    //values used in wave spawner function
     public float waveTimer = 3f;
     public int enemyAmount = 9;
     public int waveCount = 0;
@@ -31,38 +36,51 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        //gamestates are set
         gameState = GameState.Playing;
         waveState = WaveState.ReadyToSpawn;
-        money = 1000;
+        //base money is set
+        money = 0;
+        //UI is updated
         _UI.UpdateMoney(money);
         _UI.UpdateWaveCount(waveCount);
 
     }
     void Update()
     {
+        //ui updated
         _UI.UpdateTimer(waveTimer);
         _UI.UpdateHealth(_P.currentHealth);
 
+        //checks if the game is in the correct state to spawn enemies
         if (waveState == WaveState.ReadyToSpawn && _EM.enemies.Count == 0)
         {
+            //timer countdown
             waveTimer -= Time.deltaTime;
             if (waveTimer <= 0)
             {
+                //timer is reset
                 waveTimer = 3;
+                //wavecount is incremented and ui updated
                 IncrementWaveCount();
                 _UI.UpdateWaveCount(waveCount);
+                //enemies are spawned and gamestate is changed
                 StartCoroutine(_EM.SpawnWithDelay());
                 waveState = WaveState.Spawned;
             }
             else if (waveTimer == 0 && _EM.enemies.Count == 0)
                 waveTimer = 3f;
         }
+        //checks if there are no enemies left so the shop can be opened
         else if (waveState == WaveState.Spawned && _EM.enemies.Count == 0)
         {
+            //wavestate is changed and shop is turned on
             waveState = WaveState.Shop;
             _SM.ToggleShop();
         }
     }
+
+    // original inputs used for upgrade system when UI wasnt working
     /*
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -138,19 +156,17 @@ public class GameManager : Singleton<GameManager>
         }
     */
         
-    /*
-    public void ChangeGameState(GameState _gameState)
-    {
-        gameState = _gameState;
-    }
-    */
+
+    //function that gets called to increase player money
     public void AddScore(int _money)
     {
         money += _money;
         _UI.UpdateMoney(money);
     }
 
-
+    /*
+     function used to increment the wave counter, and increase the amount of enemies that get spawned in the
+     next wave */
     public void IncrementWaveCount()
     {
         waveCount += 1;
