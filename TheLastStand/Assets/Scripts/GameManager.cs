@@ -123,9 +123,7 @@ public class GameManager : Singleton<GameManager>
                 Debug.Log("Not enough money!");
         }
 
-        if (gameState == GameState.Playing && (Input.GetKeyDown(KeyCode.Escape)))
-            PauseGame();
-
+        
     }
             
 
@@ -146,15 +144,5 @@ public class GameManager : Singleton<GameManager>
         totalEnemies = (enemyAmount + waveCount);
     }
 
-    public void PauseGame()
-    {
-        gameState = GameState.Paused;
-        Time.timeScale = 0f;
-    }
 
-    public void ResumeGame()
-    {
-        gameState = GameState.Playing;
-        Time.timeScale = 1f;
-    }
 }

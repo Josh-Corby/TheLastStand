@@ -75,10 +75,8 @@ public class PlayerController : Singleton<PlayerController>
             }
         }
 
-       if (_GM.gameState == GameState.Playing && Input.GetKeyDown(KeyCode.Joystick1Button7))
-           _GM.PauseGame();
-        if (_GM.gameState == GameState.Paused && Input.GetKeyDown(KeyCode.Joystick1Button6))
-            _GM.ResumeGame();
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7))
+                _PM.Toggle();
     }
 
     void FixedUpdate()

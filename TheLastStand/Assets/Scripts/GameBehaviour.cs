@@ -11,4 +11,5 @@ public class GameBehaviour : MonoBehaviour
     protected static PlayerHealth _P { get { return PlayerHealth.instance; } }
     protected static PlayerController _PC { get { return PlayerController.instance; } }
     protected static UpgradesManager _UM { get { return UpgradesManager.instance; } }
+    protected static PauseMenu _PM { get { return PauseMenu.instance; } }
 }
