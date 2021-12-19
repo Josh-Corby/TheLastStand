@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : GameBehaviour
 {
     public float maxHealth;
-    private float health = 100;
+    private float health = 50;
     public float currentHealth;
     public float healthMultiplier;
 

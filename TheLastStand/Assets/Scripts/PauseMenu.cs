@@ -20,11 +20,13 @@ public class PauseMenu : Singleton<PauseMenu>
 
         if (pauseMenu.activeSelf)
         {
+            _MUI.TogglemainUI();
             _GM.gameState = GameState.Paused;
             Time.timeScale = 0f;
         }
         else
         {
+            _MUI.TogglemainUI();
             _GM.gameState = GameState.Playing;
             Time.timeScale = 1f;
         }

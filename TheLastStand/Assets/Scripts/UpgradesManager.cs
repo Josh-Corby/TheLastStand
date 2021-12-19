@@ -20,9 +20,13 @@ public class UpgradesManager : Singleton<UpgradesManager>
      */
     public Text money;
 
+    public Button healButton;
+    public Button fireRateUpgradeButton;
     private void Update()
     {
         money.text = _GM.money.ToString();
+        if(gun.timeBetweenShots <=0.01)
+            fireRateUpgradeButton.enabled = false;
     }
     /*
     public void UpgradeHealth()
@@ -86,7 +90,7 @@ public class UpgradesManager : Singleton<UpgradesManager>
     {
         if (_GM.money >= shopCosts[i])
         {
-            if (i >= 0 && i <= 4)
+            if (i <= 4)
             {
                 if (i == 0)
                 {

@@ -13,4 +13,5 @@ public class GameBehaviour : MonoBehaviour
     protected static UpgradesManager _UM { get { return UpgradesManager.instance; } }
     protected static PauseMenu _PM { get { return PauseMenu.instance; } }
     protected static ShopMenu _SM { get { return ShopMenu.instance; } }
+    protected static MainUI _MUI { get { return MainUI.instance; } }
 }

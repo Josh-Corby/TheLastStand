@@ -39,11 +39,13 @@ public class ShopMenu : Singleton<ShopMenu>
 
         if (shopMenu.activeSelf)
         {
+            _MUI.TogglemainUI();
             _GM.gameState = GameState.Paused;
             Time.timeScale = 0f;
         }
         else
         {
+
             _GM.gameState = GameState.Playing;
             Time.timeScale = 1f;
             _GM.waveState = WaveState.ReadyToSpawn;
