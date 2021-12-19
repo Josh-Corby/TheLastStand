@@ -99,6 +99,7 @@ public class UpgradesManager : Singleton<UpgradesManager>
 
             _GM.money -= shopCosts[i];
             shopCosts[i] += 5;
+            _SM.upgradeCosts[i].text = shopCosts[i].ToString();
         }
         if (i == 5)
             if (_GM.money >= shopCosts[i])
