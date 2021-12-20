@@ -12,9 +12,12 @@ public class ShopMenu : Singleton<ShopMenu>
 
     //text array of how much the upgrades cost to be displayed in the chop
     public TMP_Text[] upgradeCosts;
-    public TMP_Text healCost;
+    
     //text array of what the players current stats are to be displayed in the shop
     public TMP_Text[] playerStats;
+
+    public TMP_Text multiShotCost;
+    public TMP_Text healCost;
 
 
     void Start()
@@ -27,6 +30,7 @@ public class ShopMenu : Singleton<ShopMenu>
             i++;
         }
         healCost.text = _UM.shopCosts[5].ToString();
+        multiShotCost.text = _UM.shopCosts[6].ToString();
 
         //player stats are set to their respective values when the shop is turned on
         playerStats[0].text = _P.maxHealth.ToString();
@@ -35,6 +39,7 @@ public class ShopMenu : Singleton<ShopMenu>
         playerStats[3].text = gun.bulletSpeed.ToString();
         playerStats[4].text = gun.timeBetweenShots.ToString();
         playerStats[5].text = _P.currentHealth.ToString();
+        
     }
 
     //function used to toggle the shop from on and off

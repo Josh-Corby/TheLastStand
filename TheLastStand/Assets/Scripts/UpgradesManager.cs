@@ -24,13 +24,20 @@ public class UpgradesManager : Singleton<UpgradesManager>
 
     public Button healButton;
     public Button fireRateUpgradeButton;
+    public Button multishotButton;
     private void Update()
     {
         money.text = _GM.money.ToString();
         if(gun.timeBetweenShots <=0.01)
             fireRateUpgradeButton.enabled = false;
+
         if (_P.currentHealth == _P.maxHealth)
             healButton.enabled = false;
+        else
+            healButton.enabled = true;
+
+        if (gun.multishot == true)
+            multishotButton.enabled = false;
             
     }
     //This is the functions I used for the upgrades before I optimised the code

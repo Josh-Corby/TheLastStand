@@ -16,7 +16,7 @@ public class GameOver : Singleton<GameOver>
         if (gameOverCanvas.activeSelf)
         {
             Time.timeScale = 0f;
-            wavesSurvived.text = _GM.waveCount.ToString();
+            wavesSurvived.text = "Waves survived: " +  _GM.waveCount.ToString();
         }
     }
     public void Retry()

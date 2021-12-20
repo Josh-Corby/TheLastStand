@@ -12,8 +12,11 @@ public class UIManager : Singleton<UIManager>
     public TMP_Text waveTimer;
     public TMP_Text waveCount;
     //public Image HealthBar;
- 
+
     //function used to update the player money in the ui
+    private void Start()
+    {
+    }
     public void UpdateMoney(int _money)
     {
         moneyText.text = "Money: " + _money.ToString();
@@ -29,7 +32,7 @@ public class UIManager : Singleton<UIManager>
     //fuction used to update the wave counter in the ui
     public void UpdateWaveCount(int _wave)
     {
-        waveCount.text = _GM.waveCount.ToString();
+        waveCount.text = "Wave: " + _GM.waveCount.ToString();
     }
 
     //function used to update the timer in the ui
