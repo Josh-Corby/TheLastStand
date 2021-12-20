@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        Time.timeScale = 1f;
         //gamestates are set
         gameState = GameState.Playing;
         waveState = WaveState.ReadyToSpawn;
@@ -53,23 +54,26 @@ public class GameManager : Singleton<GameManager>
         _UI.UpdateHealth(_P.currentHealth);
 
         //checks if the game is in the correct state to spawn enemies
-        if (waveState == WaveState.ReadyToSpawn && _EM.enemies.Count == 0)
+        if (waveState == WaveState.ReadyToSpawn)
         {
-            //timer countdown
-            waveTimer -= Time.deltaTime;
-            if (waveTimer <= 0)
+            if (_EM.enemies.Count == 0)
             {
-                //timer is reset
-                waveTimer = 3;
-                //wavecount is incremented and ui updated
-                IncrementWaveCount();
-                _UI.UpdateWaveCount(waveCount);
-                //enemies are spawned and gamestate is changed
-                StartCoroutine(_EM.SpawnWithDelay());
-                waveState = WaveState.Spawned;
+                //timer countdown
+                waveTimer -= Time.deltaTime;
+                if (waveTimer <= 0)
+                {
+                    //timer is reset
+                    waveTimer = 3;
+                    //wavecount is incremented and ui updated
+                    IncrementWaveCount();
+                    _UI.UpdateWaveCount(waveCount);
+                    //enemies are spawned and gamestate is changed
+                    StartCoroutine(_EM.SpawnWithDelay());
+                    waveState = WaveState.Spawned;
+                }
+                else if (waveTimer == 0 && _EM.enemies.Count == 0)
+                    waveTimer = 3f;
             }
-            else if (waveTimer == 0 && _EM.enemies.Count == 0)
-                waveTimer = 3f;
         }
         //checks if there are no enemies left so the shop can be opened
         else if (waveState == WaveState.Spawned && _EM.enemies.Count == 0)

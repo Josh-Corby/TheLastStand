@@ -1107,3 +1107,4 @@ Received Import Request.
 Start importing Assets/Scripts/UpgradesManager.cs using Guid(7f34e56f80c65de4ea66816914f58995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24de65647cd5daee559432fae1e5c40c') in 0.011780 seconds 
   Import took 0.017263 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

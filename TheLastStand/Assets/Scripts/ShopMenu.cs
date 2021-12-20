@@ -5,7 +5,7 @@ using TMPro;
 
 public class ShopMenu : Singleton<ShopMenu>
 {
-    public GameObject shopMenu;
+    public GameObject shopMenuCanvas;
 
     public Bullet bullet;
     public GunControl gun;
@@ -40,9 +40,9 @@ public class ShopMenu : Singleton<ShopMenu>
     //function used to toggle the shop from on and off
     public void ToggleShop()
     {
-        shopMenu.SetActive(!shopMenu.activeSelf);
+        shopMenuCanvas.SetActive(!shopMenuCanvas.activeSelf);
 
-        if (shopMenu.activeSelf)
+        if (shopMenuCanvas.activeSelf)
         {
             /*when shop is activated the main UI is disabled, the gamestate is changed and time is paused.
             _MUI.TogglemainUI();

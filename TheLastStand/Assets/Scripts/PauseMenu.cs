@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : Singleton<PauseMenu>
 {
-    public GameObject pauseMenu;
+    public GameObject pauseMenuCanvas;
 
 
     void Update()
@@ -18,9 +18,9 @@ public class PauseMenu : Singleton<PauseMenu>
     //function to pause the game
     public void TogglePause()
     {
-        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        pauseMenuCanvas.SetActive(!pauseMenuCanvas.activeSelf);
 
-        if (pauseMenu.activeSelf)
+        if (pauseMenuCanvas.activeSelf)
         {
             //when the game is paused the main UI is disabled and time is paused
             _MUI.TogglemainUI();

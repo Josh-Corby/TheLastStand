@@ -27,7 +27,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         //if player health is 0 the player dies
         if(currentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            _GO.ToggleGameOver();
         }
 
         if(flashCounter > 0)

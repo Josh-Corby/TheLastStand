@@ -5,10 +5,6 @@ using UnityEngine;
 public class DetectController : GameBehaviour
 {
     public PlayerController thePlayer;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

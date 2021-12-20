@@ -18,7 +18,7 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         //Press L key to spawn a random target at a random spawn location
         //if (Input.GetKeyDown(KeyCode.L))
-            SpawnEnemy();
+           // SpawnEnemy();
     }
 
     // function used to spawn enemies at a random spawn point with a delay, until a wave is fully spawned
