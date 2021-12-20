@@ -5717,10 +5717,10 @@ RectTransform:
   m_Father: {fileID: 877421422}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 922.5053, y: 510.25757}
-  m_SizeDelta: {x: 237.5531, y: 69.2812}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -40, y: -34.640594}
+  m_SizeDelta: {x: 237.5531, y: 69.28119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1228412077
 MonoBehaviour:
@@ -7254,7 +7254,7 @@ MonoBehaviour:
   dontDestroy: 0
   bullet: {fileID: 8759170036166654024, guid: b8203538fa2189e4ba7c9d385b289ea2, type: 3}
   gun: {fileID: 620716901}
-  shopCosts: 46000000460000004600000046000000460000001e000000f4010000
+  shopCosts: 320000003200000032000000320000003200000032000000f4010000
   money: {fileID: 1405391336}
   healButton: {fileID: 1898394054}
   fireRateUpgradeButton: {fileID: 708599407}

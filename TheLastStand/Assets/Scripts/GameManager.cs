@@ -174,7 +174,7 @@ public class GameManager : Singleton<GameManager>
     public void IncrementWaveCount()
     {
         waveCount += 1;
-        totalEnemies = (enemyAmount + waveCount);
+        totalEnemies = (enemyAmount + (waveCount * 2));
     }
 
 

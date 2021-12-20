@@ -124,7 +124,7 @@ public class UpgradesManager : Singleton<UpgradesManager>
                 }
                 else if (i == 2)
                 {
-                    bullet.damage += 2;
+                    bullet.damage += 3;
                     _SM.playerStats[i].text = bullet.damage.ToString();
                 }
 
