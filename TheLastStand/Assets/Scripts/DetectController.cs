@@ -19,7 +19,7 @@ public class DetectController : GameBehaviour
         }
 
         //Detect Controller Input
-        if(Input.GetAxisRaw("RHorizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f)
+        if(Input.GetAxisRaw("RHorizontal") != 0.0f || Input.GetAxis("RVertical") != 0.0f)
         {
             thePlayer.useController = true;
         }

@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.5612407}
+  m_Center: {x: 0, y: 0, z: 0.28061688}
 --- !u!114 &711059312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6994040069333314914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 9}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1.16, y: 1.16, z: 1.16}
   m_Children:
   - {fileID: 711059311}
@@ -185,8 +185,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.9944053}
+  m_Center: {x: 0, y: 0, z: -0.002802446}
 --- !u!54 &6994040069333314913
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -224,9 +224,9 @@ MonoBehaviour:
   currentSpeed: 0
   speedMultiplier: 0.4
   enemyBullet: {fileID: 4999291273643531119, guid: 4f68630a533859142a89702189136ef1, type: 3}
+  firePoint: {fileID: 8675483771354181181}
   bulletSpeed: 10
   timeBetweenShots: 3
-  firePoint: {fileID: 8675483771354181181}
   thePlayer: {fileID: 0}
 --- !u!1 &8552065418347060241
 GameObject:

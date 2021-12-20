@@ -15,10 +15,14 @@ public class GunControl : GameBehaviour
 
     public Transform firePoint;
 
+    public AudioSource audioSource;
+    public AudioClip fireSound;
+
     void Start()
     {
         //base bullet damage set at game start
         bullet.damage = 10;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -33,6 +37,7 @@ public class GunControl : GameBehaviour
                 //if the requirement is met a bullet is fired from the players firepoint
                 Bullet newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bullet;
                 newBullet.speed = bulletSpeed;
+                audioSource.PlayOneShot(fireSound);
             }
         }
         else

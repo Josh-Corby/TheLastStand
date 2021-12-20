@@ -12,6 +12,8 @@ public class Bullet : GameBehaviour
     public float lifeTime;
     public int damage;
 
+    public GameObject impactEffect;
+
 
     void Update()
     {
@@ -29,6 +31,8 @@ public class Bullet : GameBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectIns, 2f);
            // Debug.Log("enemy hit");
             collision.gameObject.GetComponent<Enemy>().HurtEnemy(damage);
             Destroy(this.gameObject);
