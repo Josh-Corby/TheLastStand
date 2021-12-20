@@ -8,7 +8,9 @@ public class Bullet : GameBehaviour
       speed is bullet velocity
       lifetime is how long the bullet will fly before dissapearing
       damage is how much damage the bullet does*/
+    [HideInInspector]
     public float speed;
+
     public float lifeTime;
     public int damage;
 
@@ -37,10 +39,11 @@ public class Bullet : GameBehaviour
             collision.gameObject.GetComponent<Enemy>().HurtEnemy(damage);
             Destroy(this.gameObject);
         }
-
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
         }
+
+
     }
 }

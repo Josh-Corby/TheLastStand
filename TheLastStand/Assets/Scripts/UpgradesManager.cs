@@ -29,6 +29,9 @@ public class UpgradesManager : Singleton<UpgradesManager>
         money.text = _GM.money.ToString();
         if(gun.timeBetweenShots <=0.01)
             fireRateUpgradeButton.enabled = false;
+        if (_P.currentHealth == _P.maxHealth)
+            healButton.enabled = false;
+            
     }
     //This is the functions I used for the upgrades before I optimised the code
     /*
@@ -141,6 +144,12 @@ public class UpgradesManager : Singleton<UpgradesManager>
                 _P.currentHealth = _P.maxHealth;
                 _SM.playerStats[i].text = _P.maxHealth.ToString();
             }
-                
+               
+        if (i == 6)
+            if(_GM.money >= shopCosts[i])
+            {
+                _GM.money -= shopCosts[i];
+                _GC.multishot = true;
+            }
     }
 }

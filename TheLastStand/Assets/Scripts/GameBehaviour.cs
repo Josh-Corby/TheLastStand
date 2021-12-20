@@ -14,5 +14,6 @@ public class GameBehaviour : MonoBehaviour
     protected static PauseMenu _PM { get { return PauseMenu.instance; } }
     protected static ShopMenu _SM { get { return ShopMenu.instance; } }
     protected static MainUI _MUI { get { return MainUI.instance; } }
-    protected static GameOver _GO {  get { return GameOver.instance; } }
+    protected static GameOver _GO { get { return GameOver.instance; } }
+    protected static GunControl _GC { get { return GunControl.instance; } }
 }

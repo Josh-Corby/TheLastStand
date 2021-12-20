@@ -44,7 +44,7 @@ public class ShopMenu : Singleton<ShopMenu>
 
         if (shopMenuCanvas.activeSelf)
         {
-            /*when shop is activated the main UI is disabled, the gamestate is changed and time is paused.
+            //when shop is activated the main UI is disabled, the gamestate is changed and time is paused.
             _MUI.TogglemainUI();
             _GM.gameState = GameState.Paused;
             Time.timeScale = 0f;

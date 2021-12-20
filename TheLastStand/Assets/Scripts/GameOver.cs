@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameOver : Singleton<GameOver>
 {
@@ -17,5 +18,16 @@ public class GameOver : Singleton<GameOver>
             Time.timeScale = 0f;
             wavesSurvived.text = _GM.waveCount.ToString();
         }
+    }
+    public void Retry()
+    {
+        ToggleGameOver();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Menu()
+    {
+        ToggleGameOver();
+        SceneManager.LoadScene("MainMenu");
     }
 }
